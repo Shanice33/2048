@@ -1,4 +1,5 @@
 var board=new Array();
+var boardBack;
 var score=0;
 var top=240;
 
@@ -80,7 +81,7 @@ function generateOneNumber() {
 
 //事件响应循环
 $(document).keydown(function (event) {
-    //alert(event.keyCode);
+    boardBack=deepcopy(board);
     //每次移动都会新增加一个数字
     switch(event.keyCode){
         case 37://left
