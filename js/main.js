@@ -18,6 +18,7 @@ function newGame() {
     //随机两个各自生成的数字
     generateOneNumber();
     generateOneNumber();
+    boardBack=deepcopy(board);
 }
 
 function init() {
