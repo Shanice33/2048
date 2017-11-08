@@ -41,17 +41,6 @@ function divAlert(flag){
 
 }
 
-//多为数组的深拷贝
-function deepcopy(obj) {
-    var out = [],i = 0,len = obj.length;
-    for (; i < len; i++) {
-        if (obj[i] instanceof Array){
-            out[i] = deepcopy(obj[i]);
-        }
-        else out[i] = obj[i];
-    }
-    return out;
-}
 //显示分数
 function updateScore() {
     $("#score span").text(score);
