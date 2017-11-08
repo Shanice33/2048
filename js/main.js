@@ -1,6 +1,6 @@
 var board=new Array();
 var boardBack;
-var score=0;
+var score,scoreBack;
 var top=240;
 
 $(function () {
@@ -22,6 +22,8 @@ function newGame() {
 }
 
 function init() {
+    score=scoreBack=0;
+    updateScore();
     for (var i=0;i<4;i++){
         for(var j=0;j<4;j++){
             var cell=$("#cell-"+i+j);
@@ -83,6 +85,7 @@ function generateOneNumber() {
 //事件响应循环
 $(document).keydown(function (event) {
     boardBack=deepcopy(board);
+    scoreBack=score;
     //每次移动都会新增加一个数字
     switch(event.keyCode){
         case 37://left
@@ -147,6 +150,7 @@ function move(dir) {
                         if(board[i][k]==board[i][j]&&noBlock(i,k,j,board,'h')){
                             showMoveAnimation(i,j,i,k);
                             board[i][k]+=board[i][j];
+                            score+=board[i][k];
                             board[i][j]=0;
                         }
 
@@ -169,6 +173,7 @@ function move(dir) {
                         if (board[i][k] == board[i][j] && noBlock(i, j, k, board, 'h')) {
                             showMoveAnimation(i, j, i, k);
                             board[i][k] += board[i][j];
+                            score+=board[i][k];
                             board[i][j] = 0;
                         }
                     }
@@ -190,6 +195,7 @@ function move(dir) {
                         if(board[k][j]==board[i][j]&&noBlock(k,i,j,board,'v')){
                             showMoveAnimation(i,j,k,j);
                             board[k][j]+=board[i][j];
+                            score+=board[k][j];
                             board[i][j]=0;
                         }
                     }
@@ -211,6 +217,7 @@ function move(dir) {
                        if(board[k][j]==board[i][j]&&noBlock(i,k,j,board,'v')){
                            showMoveAnimation(i,j,k,j);
                            board[k][j]+=board[i][j];
+                           score+=board[k][j];
                            board[i][j]=0;
                        }
 
@@ -219,6 +226,7 @@ function move(dir) {
            }
        }
     }
+    updateScore(score);
     setTimeout("updateBoardView()",200);
     return true;
 }

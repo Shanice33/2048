@@ -21,8 +21,8 @@ function showMoveAnimation(fromx,fromy,tox,toy){
 
 //弹出框
 function divAlert(flag){
-    var txt1=$("<p>恭喜你通关顺利</p>");
-    var txt2=$("<p>很遗憾，通关失败</p>");
+    var txt1=$("<p>恭喜你通关顺利</p><p>您的分数是："+score+"分,真棒！</p>");
+    var txt2=$("<p>很遗憾，通关失败</p><p>您的分数是："+score+"分,很不错了！</p>");
     var aAlert=$(".alert");
     aAlert.append($("<button id='yes'>再来一局</button>  <button id='no'>不玩了</button>"));
     if(flag){
@@ -51,4 +51,8 @@ function deepcopy(obj) {
         else out[i] = obj[i];
     }
     return out;
+}
+//显示分数
+function updateScore() {
+    $("#score span").text(score);
 }

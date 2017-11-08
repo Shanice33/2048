@@ -10,13 +10,14 @@ header h1{
     font-size:60px;
     font-weight:bold;
 }
-header #start,#back{
+header #start,#back,#score{
     width:100px;
     padding:10px;
     background: pink;
     color: white;
     font-family: Arial,Helvetica,sans-serif;
     border-radius: 10px;
+    margin: auto 20px;
 }
 header #start:hover,#back:hover{
     background: lightcoral;
@@ -59,12 +60,12 @@ header #start:hover,#back:hover{
     top:180px;
     width:250px;
     display: none;
-    background: pink;
+    background:pink;
     color: white;
     font-size:20px;
     line-height: 20px;
-    filter:alpha(opacity=80);
-    opacity: 0.8;
+    filter:alpha(opacity=95);
+    opacity: 0.95;
 }
 #yes,#no{
     margin: 20px 10px;
