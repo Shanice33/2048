@@ -1,15 +1,15 @@
-function showNumberWithAnimation(i,j,randNumber){
-    var numberCell=$("#numbercell-"+i+j);
-    numberCell.css({'background-color':getNumberBackgroundColor(randNumber),'color':getNumberColor(randNumber)});
-    numberCell.text(randNumber);
-
-    numberCell.animate({
-        width: '100px',
-        height: '100px',
-        top: getTop(i)+'px',
-        left: getLeft(j)+'px'
-    },50);
-}
+// function showNumberWithAnimation(i,j,randNumber){
+//     var numberCell=$("#numbercell-"+i+j);
+//     numberCell.css({'background-color':getNumberBackgroundColor(randNumber),'color':getNumberColor(randNumber)});
+//     numberCell.text(randNumber);
+//
+//     numberCell.animate({
+//         width: '100px',
+//         height: '100px',
+//         top: getTop(i)+'px',
+//         left: getLeft(j)+'px'
+//     },50);
+// }
 
 function showMoveAnimation(fromx,fromy,tox,toy){
     //alert("hello js");
