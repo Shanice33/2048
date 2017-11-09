@@ -1,14 +1,14 @@
 var w,h;
 $(function () {
-   w=$(".cell").width();
-   h=$(".cell").height();
+   w=$(".cell").outerWidth(true);
+   h=$(".cell").outerHeight(true);
 });
 //设置单个表格的位置
-function getLeft(i) {
-    return 20+i*(w+20);
+function getLeft(j) {
+    return j*w;
 }
 function getTop(i) {
-    return 20+i*(h+20);
+    return i*h;
 }
 //取得不同数字的背景颜色和字体颜色
 function getNumberBackgroundColor(number){
@@ -52,8 +52,10 @@ function getNumberBackgroundColor(number){
         case 8192:
             return "#93c";
             break;
+        default:
+            return "white";
+            break;
     }
-    return "black";
 }
 function getNumberColor(number){
     if (number <= 4){

@@ -41,7 +41,7 @@ function divAlert(flag){
 
 }
 
-//显示分数
+//显示分数：分数是每个相加数的和
 function updateScore() {
     $("#score span").text(score);
 }

@@ -36,7 +36,8 @@ function init() {
             board[i][j]=0;
         }
     }
-    updateBoardView();  //对board二位数组进行设定
+    //
+    // updateBoardView();  //对board二位数组进行设定
 }
 
 function updateBoardView() {
@@ -46,14 +47,19 @@ function updateBoardView() {
             var numberId="numbercell-"+i+j;
             $("#container").append('<div class="numbercell" id='+numberId+'></div>');
             var theNumberCell=$("#numbercell-"+i+j);
-            if(board[i][j]==0){
-                theNumberCell.css({'width':'0px','height':'0px','top':getTop(i)+'px','left':getLeft(j)+'px'}); //设置不可见
-            }else{
-                //覆盖cell
-                theNumberCell.css({'width':'100px','height':'100px','top':getTop(i)+'px','left':getLeft(j)+'px'});
-                //设置其背景颜色和字体颜色
+            theNumberCell.css({'width':'100px','height':'100px','top':getTop(i)+'px','left':getLeft(j)+'px'});
+            // if(board[i][j]==0){
+            //     theNumberCell.css({'top':getTop(i)+'px','left':getLeft(j)+'px'}); //设置不可见
+            // }else{
+            //     //覆盖cell
+            //     theNumberCell.css({'width':'100px','height':'100px','top':getTop(i)+'px','left':getLeft(j)+'px'});
+            //     //设置其背景颜色和字体颜色
+            //     theNumberCell.css({'background-color':getNumberBackgroundColor(board[i][j]),'color':getNumberColor(board[i][j])});
+            //     //显示数字
+            //     theNumberCell.text(board[i][j]);
+            // }
+            if(board[i][j]){
                 theNumberCell.css({'background-color':getNumberBackgroundColor(board[i][j]),'color':getNumberColor(board[i][j])});
-                //显示数字
                 theNumberCell.text(board[i][j]);
             }
         }
@@ -65,20 +71,30 @@ function generateOneNumber() {
         return false;
     }
     //随机选一个位置
-    var randx=parseInt(Math.floor(Math.random()*4));
-    var randy=parseInt(Math.floor(Math.random()*4));
-    while(true){
+    do{
+        var randx=parseInt(Math.floor(Math.random()*4));
+        var randy=parseInt(Math.floor(Math.random()*4));
+
         if(board[randx][randy]==0){
             break;
         }
-        var randx=parseInt(Math.floor(Math.random()*4));
-        var randy=parseInt(Math.floor(Math.random()*4));
-    }
+
+    }while(true);
+    // var randx=parseInt(Math.floor(Math.random()*4));
+    // var randy=parseInt(Math.floor(Math.random()*4));
+    // while(true){
+    //     if(board[randx][randy]==0){
+    //         break;
+    //     }
+    //     var randx=parseInt(Math.floor(Math.random()*4));
+    //     var randy=parseInt(Math.floor(Math.random()*4));
+    // }
     //随机选一个数字
     var randNumber=Math.random()<0.5?2:4;
     //在随机的位置上显示随机数字
     board[randx][randy]=randNumber;
-    showNumberWithAnimation(randx,randy,randNumber);
+    //showNumberWithAnimation(randx,randy,randNumber);
+    setTimeout(updateBoardView,50);
     return true;
 }
 
@@ -119,7 +135,7 @@ $(document).keydown(function (event) {
 //判断游戏是否结束
 function isgameover(){
     var arr=board.join(",").split(",");
-    var max=Math.max.apply({},arr);
+    var max=Math.max.apply({},arr);//二维数组求出最大值
     if(nospace(board)&&nomove(board)){
         divAlert(false);
     }else if(max==2048) {
